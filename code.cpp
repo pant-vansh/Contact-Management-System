@@ -3,7 +3,7 @@
 using namespace std;
 class temp
 {
-    string phoneNo,name,address,description,search;
+    string name,address,father_name,mother_name,mobile_no,gender,email,description,search;
     fstream file;
     public:
     void addContact();
@@ -49,37 +49,59 @@ int main()
 
 void temp :: addContact()
 {
-    cout<<"Enter Phone Number :: ";
-    getline(cin,phoneNo);
-    cout<<"Enter Name :: ";
+    cout<<"Enter Name:: ";
     getline(cin,name);
     cout<<"Enter Address :: ";
     getline(cin,address);
-    cout<<"Enter Description :: ";
+    cout<<"Enter Father's Name :: ";
+    getline(cin,father_name);
+    cout<<"Enter Mother's Name :: ";
+    getline(cin,mother_name);
+    cout<<"Enter Phone Number :: ";
+    getline(cin,mobile_no);
+    cout<<"Enter Gender :: ";
+    getline(cin,gender);
+    cout<<"Enter Email Address :: ";
+    getline(cin,email);
+    cout<<"Description :: ";
     getline(cin,description);
 
     file.open("data.csv" , ios :: out | ios :: app);
-    file<<phoneNo<<","<<name<<","<<address<<","<<description<<"\n";
+    file<<name<<","<<address<<","<<father_name<<","<<mother_name<<","<<mobile_no<<","<<gender<<","<<email<<","<<description<<"\n";
     file.close();
 }
 void temp :: showAll()
 {
+    cout<<endl;
     file.open("data.csv", ios :: in);
-    getline(file,phoneNo,',');
     getline(file,name,',');
     getline(file,address,',');
+    getline(file,father_name,',');
+    getline(file,mother_name,',');
+    getline(file,mobile_no,',');
+    getline(file,gender,',');
+    getline(file,email,',');
     getline(file,description,'\n');
+    
 
     while( !file.eof())
     {
-        cout<<"Phone Number :: "<<phoneNo<<endl;
         cout<<"Name :: "<<name<<endl;
         cout<<"Address :: "<<address<<endl;
+        cout<<"Father's Name :: "<<father_name<<endl;
+        cout<<"Mother's Name :: "<<mother_name<<endl;
+        cout<<"Phone Number  :: "<<mobile_no<<endl;
+        cout<<"Gender :: "<<gender<<endl;
+        cout<<"Emial  :: "<<email<<endl;
         cout<<"Description :: "<<description<<endl<<endl;
 
-        getline(file,phoneNo,',');
         getline(file,name,',');
         getline(file,address,',');
+        getline(file,father_name,',');
+        getline(file,mother_name,',');
+        getline(file,mobile_no,',');
+        getline(file,gender,',');
+        getline(file,email,',');
         getline(file,description,'\n');
     }
     file.close();
@@ -87,27 +109,41 @@ void temp :: showAll()
 
 void temp :: searchContact()
 {
-    cout<<"Enter Phone No :: ";
+    cout<<"Enter Name :: ";
     getline(cin,search);
 
     file.open("data.csv", ios :: in);
-    getline(file,phoneNo,',');
     getline(file,name,',');
     getline(file,address,',');
+    getline(file,father_name,',');
+    getline(file,mother_name,',');
+    getline(file,mobile_no,',');
+    getline(file,gender,',');
+    getline(file,email,',');
     getline(file,description,'\n');
+    
 
     while( !file.eof())
     {
-        if( phoneNo == search)
+        if( name == search)
         {
-            cout<<"Phone Number :: "<<phoneNo<<endl;
             cout<<"Name :: "<<name<<endl;
             cout<<"Address :: "<<address<<endl;
-            cout<<"Description :: "<<description<<endl<<endl;
+            cout<<"Father's Name :: "<<father_name<<endl;
+            cout<<"Mother's Name :: "<<mother_name<<endl;
+            cout<<"Phone Number  :: "<<mobile_no<<endl;
+            cout<<"Gender :: "<<gender<<endl;
+            cout<<"Emial  :: "<<email<<endl<<endl;
+            cout<<"Description :: "<<description<<endl;
         }
-        getline(file,phoneNo,',');
+
         getline(file,name,',');
         getline(file,address,',');
+        getline(file,father_name,',');
+        getline(file,mother_name,',');
+        getline(file,mobile_no,',');
+        getline(file,gender,',');
+        getline(file,email,',');
         getline(file,description,'\n');
     }
     file.close();
