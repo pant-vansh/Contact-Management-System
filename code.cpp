@@ -37,7 +37,7 @@ int main()
         {
             case '1':
                 obj.addContact();
-                // thi is case 1
+                
                 break;
 
             case '2':
