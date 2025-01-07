@@ -9,42 +9,62 @@ class temp
     void addContact();
     void showAll();
     void searchContact();
+    void modifyContact();
+    void deleteContact();
 }obj;
 int main()
 {
     char choice;
 
-    cout<<"1 --> Add Contact"<<endl;
-    cout<<"2 --> Show All Contact"<<endl;
-    cout<<"3 --> Search Contact"<<endl;
-    cout<<"0 --> exit"<<endl;
-
-    cin>>choice;
-    cin.ignore();
-
-    switch (choice)
+    // Display the menu with the formatted text
+    while (true)
     {
-        case '1':
-            obj.addContact();
-            break;
+        printf("\n\t\tWELCOME TO THE PHONEBOOK MENU");
+        printf("\n\t\t******************************");
+        printf("\n\nEnter your choice number");
+        printf("\n\n\t1. Add New");
+        printf("\n\t2. List of Contacts");
+        printf("\n\t3. Exit Menu");
+        printf("\n\t4. Modify Contacts");
+        printf("\n\t5. Search for Contacts");
+        printf("\n\t6. Delete Contacts\n");
 
-        case '2':
-           obj.showAll();
-           break;
+        // Take user input
+        cin >> choice;
+        // cin.ignore();  // Clear the buffer after reading a character
 
-        case '3':
-           obj.searchContact();
-           break;
-        case '0':
-            return 0;
-            break;
-        default:
-            cout<<"Invalid Selection ...!";
-            break;
+        switch (choice)
+        {
+            case '1':
+                obj.addContact();
+                break;
+
+            case '2':
+                obj.showAll();
+                break;
+
+            case '3':
+                cout << "Exiting the program." << endl;
+                return 0;  // Exit the program
+
+            case '4':
+                obj.modifyContact();
+                break;
+
+            case '5':
+                obj.searchContact();
+                break;
+
+            case '6':
+                obj.deleteContact();
+                break;
+
+            default:
+                cout << "Invalid Selection ...! Please try again." << endl;
+                break;
+        }
     }
-
-    return 0;
-    
+    return 0; 
 }
 
 void temp :: addContact()
@@ -122,7 +142,9 @@ void temp :: searchContact()
     getline(file,email,',');
     getline(file,description,'\n');
     
+    bool found = false;
 
+    cout<<endl;
     while( !file.eof())
     {
         if( name == search)
@@ -133,8 +155,11 @@ void temp :: searchContact()
             cout<<"Mother's Name :: "<<mother_name<<endl;
             cout<<"Phone Number  :: "<<mobile_no<<endl;
             cout<<"Gender :: "<<gender<<endl;
-            cout<<"Emial  :: "<<email<<endl<<endl;
-            cout<<"Description :: "<<description<<endl;
+            cout<<"Emial  :: "<<email<<endl;
+            cout<<"Description :: "<<description<<endl<<endl;
+
+            found = true;
+            break;
         }
 
         getline(file,name,',');
@@ -147,4 +172,20 @@ void temp :: searchContact()
         getline(file,description,'\n');
     }
     file.close();
+
+    if (!found) 
+    {
+        cout << "Contact not found!" << endl;
+    }
+}
+
+// add later
+void temp::modifyContact()
+{
+    cout << "Modify Contact functionality will go here." << endl;
+}
+
+void temp::deleteContact()
+{
+    cout << "Delete Contact functionality will go here." << endl;
 }
