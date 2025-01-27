@@ -38,6 +38,7 @@ int main() {
         switch (choice) {
             case '1':
                 obj.addContact();
+                
                 break;
             case '2':
                 obj.showAll();
